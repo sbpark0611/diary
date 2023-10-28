@@ -11,11 +11,16 @@ import os
 file_path = "./diary.json"
 isWriting = False
 slots = []
+components = []
 
 def show_frame(frame):
     frame.tkraise()
 
 def openDiary(data):
+    global components
+    for component in components:
+        component.destroy()
+
     bold_font = font.Font(weight="bold")
 
     date = Label(diaryFrame, wraplength=500, text=data['date'])
@@ -43,6 +48,8 @@ def openDiary(data):
 
     goReadingDiaryButton = Button(diaryFrame, text='go back', command=openReadingDiary)
     goReadingDiaryButton.pack(padx=10,pady=3)
+
+    components = [date, tagsText, tags, diaryText, diary, replyText, reply, goReadingDiaryButton]
 
     show_frame(diaryFrame)
 
@@ -93,6 +100,7 @@ def writeDiary():
         ]
 
         def get_small_tag(input_text, depth):
+            print("getsmall tag", input_text, depth)
             qa = QA(input_text.split('\n'))
             res = []
             for question in questions:
