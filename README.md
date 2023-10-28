@@ -28,15 +28,19 @@
 
 bert-base-ner, bert-large-uncased-whole-word-masking-squad 모델을 이용했다.
 
+#### Named Entity Recognition
+
 먼저 bert-base-ner로 named entity를 추출했다.
 
 추출된 named entity는 그대로 태그로 입력했다.
 
-추가로 named entity가 아니어도 중요한 정보를 담고 있을 가능성이 있다.
+#### Question Answering
+
+named entity가 아니어도 중요한 정보를 담고 있을 가능성이 있다.
 
 그러한 정보를 추출하기 위해 bert-large-uncased-whole-word-masking-squad를 사용했다.
 
-demo를 참고해 question answering을 할 수 있는 모델을 만들었다.
+demo를 참고해 Question Answering을 할 수 있는 모델을 만들었다.
 
 중요 키워드를 얻을 수 있는 여러 질문을 하고 작성된 일기 안에서 답을 추출한다.
 
@@ -69,6 +73,8 @@ gpt2 모델을 이용했다.
 <img width="528" alt="Screenshot 2023-10-28 at 10 28 45 PM" src="https://github.com/sbpark0611/diary/assets/101174826/8c70a7aa-b91e-4f20-9de8-22be242153ce">
 
 - 너무 길게 작성하면 모델에서 오류가 난다.
+
+- 모델이 처리하는 시간이 걸린다.
 
 ### 일기 리스트 보기
 
