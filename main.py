@@ -94,7 +94,7 @@ def writeDiary():
             for question in questions:
                 qa_results = qa.generate(question)
                 for qa_result in qa_results:
-                    if len(qa_result.split(" ")) > 5:
+                    if len(qa_result.split(" ")) >= 5:
                         if depth < 3:
                             res += get_small_tag(qa_result, depth+1)
                     else:

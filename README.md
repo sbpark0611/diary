@@ -18,33 +18,66 @@
 
 - [gpt2](https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/public/gpt-2)
 
-- [bert-large-uncased-whole-word-masking-squad-0001](https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/intel/bert-large-uncased-whole-word-masking-squad-0001)
+- [bert-large-uncased-whole-word-masking-squad](https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/intel/bert-large-uncased-whole-word-masking-squad-0001)
 
 - [bert-base-ner](https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/public/bert-base-ner)
 
 ## 상세 설명
 
+### 태그 생성
 
+bert-base-ner, bert-large-uncased-whole-word-masking-squad 모델을 이용했다.
+
+먼저 bert-base-ner로 named entity를 추출했다.
+
+추출된 named entity는 그대로 태그로 입력했다.
+
+추가로 named entity가 아니어도 중요한 정보를 담고 있을 가능성이 있다.
+
+그러한 정보를 추출하기 위해 bert-large-uncased-whole-word-masking-squad를 사용했다.
+
+demo를 참고해 question answering을 할 수 있는 모델을 만들었다.
+
+중요 키워드를 얻을 수 있는 여러 질문을 하고 작성된 일기 안에서 답을 추출한다.
+
+사용된 질문
+- "what is the most important part of this paragraph?",
+- "what is the topic of the paragraph?"
+
+question answering을 통해 나온 결과물은 길이가 길어 태그에 적합하지 않을 수 있기 때문에 만약 결과가 5단어 이상일 경우 다시 해당 결과 안에서 위의 질문을 통해 중요 키워드를 추출했다.
+
+### 댓글
+
+gpt2 모델을 이용했다.
+
+특정 문자열을 입력하면 이어지는 문자열을 예측하는 모델이다.
+
+작성한 일기를 읽고 AI가 위로, 공감, 칭찬 등의 반응을 하기를 바랬다.
+
+따라서 입력된 텍스트를 "[User]: {input_text} \n[AI]: "로 변경했다. 이렇게 하면 입력된 텍스트에 대한 반응을 할 것으로 예측했다.
+
+하지만 잘 작동하지 않았다. 질문과 응답 데이터로 fine tuning이 필요할 것 같다.
 
 ### 메인 화면
+
 <img width="525" alt="Screenshot 2023-10-28 at 10 27 54 PM" src="https://github.com/sbpark0611/diary/assets/101174826/d2167a7f-fbbe-4727-bf7c-d5d5eb831d3b">
+
 - 일기 보기, 일기 쓰기 두 개의 버튼이 있다.
 
 ### 일기 작성
+
 <img width="528" alt="Screenshot 2023-10-28 at 10 28 45 PM" src="https://github.com/sbpark0611/diary/assets/101174826/8c70a7aa-b91e-4f20-9de8-22be242153ce">
+
 - 너무 길게 작성하면 모델에서 오류가 난다.
 
 ### 일기 리스트 보기
+
 <img width="529" alt="Screenshot 2023-10-28 at 10 29 01 PM" src="https://github.com/sbpark0611/diary/assets/101174826/3ca20e3c-10f0-46bc-9adb-8c39db81a505">
+
 - 일기가 많은 경우 스크롤이 된다.
 
 ### 일기 상세 보기
+
 <img width="525" alt="Screenshot 2023-10-28 at 10 30 21 PM" src="https://github.com/sbpark0611/diary/assets/101174826/ce72ca1d-9cfd-4ae7-a81f-8a66083827d4">
+
 - 날짜, 태그, 일기, 댓글을 볼 수 있다.
-
-## 아쉬운 점
-
-- UI가 굉장히 사용하기 불편하고 예쁘지 않다.
-
-- 모델의 성능이 낮다. 특히 gpt2를 이용한 댓글이 정상적으로 달리지 않는다. 
-    - 여러 방법을 시도해봤지만 성능을 올리기 위해서는 결국 fine tuning이 필요할 듯 하다.

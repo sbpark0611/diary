@@ -9,7 +9,7 @@ class GPT2:
 
     def generate(self, input_text):
         input_text = input_text.replace("\n", "")
-        text = "[user]: " + input_text + "[][AI]: "
+        text = "[user]: " + input_text + " \n[AI]: "
         encoded_input = self.tokenizer(text, return_tensors="pt")
         outputs = self.model.generate(
             **encoded_input,                     
