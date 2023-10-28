@@ -48,7 +48,6 @@ demo를 참고해 Question Answering을 할 수 있는 모델을 만들었다.
 - "what is the most important part of this paragraph?"
 - "what is the topic of the paragraph?"
 - "What is the key point in this content?"
-- "Which parts of this contain the most important information?"
 - "What is the essential element that I should focus on in this content?"
 
 question answering을 통해 나온 결과물은 길이가 길어 태그에 적합하지 않을 수 있기 때문에 만약 결과가 5단어 이상일 경우 다시 해당 결과 안에서 위의 질문을 통해 중요 키워드를 추출했다.

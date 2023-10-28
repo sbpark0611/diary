@@ -83,11 +83,12 @@ def writeDiary():
         ner_result = ner.generate(input_text)
         tags = ner_result
 
+        print("ner finished")
+
         questions = [
             "what is the most important part of this paragraph?",
             "what is the topic of the paragraph?",
             "What is the key point in this content?",
-            "Which parts of this contain the most important information?",
             "What is the essential element that I should focus on in this content?",
         ]
 
@@ -107,7 +108,12 @@ def writeDiary():
         tags += get_small_tag(input_text, 0)
         tags = list(set(tags))
 
+        print("qa finished")
+
         gpt_result = gpt2.generate(input_text)
+
+        print("gpt finished")
+
         newData = {
             "diary": input_text,
             "tags": tags,

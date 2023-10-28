@@ -13,7 +13,7 @@ class GPT2:
         encoded_input = self.tokenizer(text, return_tensors="pt")
         outputs = self.model.generate(
             **encoded_input,                     
-            max_length=256,
+            max_length=1024,
             no_repeat_ngram_size=2,
             labels=encoded_input["input_ids"],
             num_beams=5
