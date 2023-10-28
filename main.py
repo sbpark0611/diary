@@ -19,28 +19,30 @@ def openDiary(data):
     bold_font = font.Font(weight="bold")
 
     date = Label(diaryFrame, wraplength=500, text=data['date'])
-    date.pack()
+    date.pack(padx=10, pady= 3)
 
     tagsText = Label(diaryFrame, wraplength=500, text="tags", font=bold_font)
-    tagsText.pack()
+    tagsText.pack(padx=10, pady= 3)
     txt = ""
-    for i in data['tags']:
-        txt += ", "+i
+    for i, tag in enumerate(data['tags']):
+        if i > 0:
+            txt += ", "
+        txt += tag
     tags = Label(diaryFrame, wraplength=500, text=txt)
-    tags.pack()
+    tags.pack(padx=10, pady= 3)
 
     diaryText = Label(diaryFrame, wraplength=500, text="diary", font=bold_font)
-    diaryText.pack()
+    diaryText.pack(padx=10, pady= 3)
     diary = Label(diaryFrame, wraplength=500, text=data['diary'])
-    diary.pack()
+    diary.pack(padx=10, pady= 3)
 
     replyText = Label(diaryFrame, wraplength=500, text="AI's reply", font=bold_font)
-    replyText.pack()
+    replyText.pack(padx=10, pady= 3)
     reply = Label(diaryFrame, wraplength=500, text=data['reply'])
-    reply.pack()
+    reply.pack(padx=10, pady= 3)
 
     goReadingDiaryButton = Button(diaryFrame, text='go back', command=openReadingDiary)
-    goReadingDiaryButton.pack(padx=10,pady=10)
+    goReadingDiaryButton.pack(padx=10,pady=3)
 
     show_frame(diaryFrame)
 
@@ -53,7 +55,7 @@ def openReadingDiary():
 
     for data in json_data["data"]:
         btn = Button(scrollFrame, text=data["date"], command=lambda : openDiary(data))
-        btn.pack(pady=5)
+        btn.pack(padx=10, pady= 10)
         slots.append(btn)
 
     show_frame(diaryReadingFrame)
@@ -92,8 +94,8 @@ def writeDiary():
             for question in questions:
                 qa_results = qa.generate(question)
                 for qa_result in qa_results:
-                    if len(qa_result.split(" ")) > 6:
-                        if depth < 5:
+                    if len(qa_result.split(" ")) > 5:
+                        if depth < 3:
                             res += get_small_tag(qa_result, depth+1)
                     else:
                         res.append(qa_result)
@@ -143,14 +145,14 @@ if __name__ == "__main__":
     diaryWritingFrame = Frame(tk)
 
     label1 = Label(diaryWritingFrame, text="Enter date:")
-    label1.pack()
+    label1.pack(padx=10, pady= 10)
     dateEntry = Entry(diaryWritingFrame, width=50)
-    dateEntry.pack()
+    dateEntry.pack(padx=10, pady= 10)
     
     label2 = Label(diaryWritingFrame, text="Enter text:")
-    label2.pack()
+    label2.pack(padx=10, pady= 10)
     entry = Entry(diaryWritingFrame, width=50)
-    entry.pack()
+    entry.pack(padx=10, pady= 10)
 
     confirmButton = Button(diaryWritingFrame, text='confirm', command=writeDiary)
     cancelButton = Button(diaryWritingFrame, text='cancel', command=openMain)
@@ -169,7 +171,7 @@ if __name__ == "__main__":
     scrollbar.pack(side=RIGHT,fill=Y)
 
     canvas = Canvas(diaryReadingFrame, yscrollcommand=scrollbar.set)
-    canvas.pack(side=LEFT, fill=BOTH, expand=True)
+    canvas.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady= 10)
 
     scrollbar.config(command=canvas.yview)
 
