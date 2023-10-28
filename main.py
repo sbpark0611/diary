@@ -99,21 +99,23 @@ def writeDiary():
             "What is the essential element that I should focus on in this content?",
         ]
 
-        def get_small_tag(input_text, depth):
+        def get_small_tag(input_text, depth, prev):
             print("getsmall tag", input_text, depth)
             qa = QA(input_text.split('\n'))
             res = []
             for question in questions:
                 qa_results = qa.generate(question)
                 for qa_result in qa_results:
-                    if len(qa_result.split(" ")) >= 5:
+                    if prev == qa_result or len(qa_result.split(" ")) >= 10:
+                        continue
+                    elif len(qa_result.split(" ")) >= 5:
                         if depth < 3:
                             res += get_small_tag(qa_result, depth+1)
                     else:
                         res.append(qa_result)
             return res
 
-        tags += get_small_tag(input_text, 0)
+        tags += get_small_tag(input_text, 0, "")
         tags = list(set(tags))
 
         print("qa finished")
@@ -150,7 +152,7 @@ if __name__ == "__main__":
 
     tk = Tk() 
     tk.title("diary app")
-    tk.geometry("540x360")
+    tk.geometry("1080x720")
 
     mainFrame = Frame(tk)
 
