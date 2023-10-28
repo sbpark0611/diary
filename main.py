@@ -85,7 +85,10 @@ def writeDiary():
 
         questions = [
             "what is the most important part of this paragraph?",
-            "what is the topic of the paragraph?"
+            "what is the topic of the paragraph?",
+            "What is the key point in this content?",
+            "Which parts of this contain the most important information?",
+            "What is the essential element that I should focus on in this content?",
         ]
 
         def get_small_tag(input_text, depth):
