@@ -78,8 +78,6 @@ gpt2 모델을 이용했다.
 
 <img width="534" alt="Screenshot 2023-10-28 at 10 21 39 PM" src="https://github.com/sbpark0611/diary/assets/101174826/504ba31a-dc23-4e92-b6be-1ff160c85683">
 
-- 너무 길게 작성하면 모델에서 오류가 난다.
-
 - 모델이 처리하는 시간이 걸린다.
 
 ### 일기 리스트 보기
