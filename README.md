@@ -30,25 +30,25 @@ bert-base-ner, bert-large-uncased-whole-word-masking-squad 모델을 이용했�
 
 #### Named Entity Recognition
 
-먼저 bert-base-ner로 named entity를 추출했다.
+    먼저 bert-base-ner로 named entity를 추출했다.
 
-추출된 named entity는 그대로 태그로 입력했다.
+    추출된 named entity는 그대로 태그로 입력했다.
 
 #### Question Answering
 
-named entity가 아니어도 중요한 정보를 담고 있을 가능성이 있다.
+    named entity가 아니어도 중요한 정보를 담고 있을 가능성이 있다.
 
-그러한 정보를 추출하기 위해 bert-large-uncased-whole-word-masking-squad를 사용했다.
+    그러한 정보를 추출하기 위해 bert-large-uncased-whole-word-masking-squad를 사용했다.
 
-demo를 참고해 Question Answering을 할 수 있는 모델을 만들었다.
+    demo를 참고해 Question Answering을 할 수 있는 모델을 만들었다.
 
-중요 키워드를 얻을 수 있는 여러 질문을 하고 작성된 일기 안에서 답을 추출한다.
+    중요 키워드를 얻을 수 있는 여러 질문을 하고 작성된 일기 안에서 답을 추출한다.
 
-사용된 질문
-- "what is the most important part of this paragraph?",
-- "what is the topic of the paragraph?"
+    사용된 질문
+        - "what is the most important part of this paragraph?",
+        - "what is the topic of the paragraph?"
 
-question answering을 통해 나온 결과물은 길이가 길어 태그에 적합하지 않을 수 있기 때문에 만약 결과가 5단어 이상일 경우 다시 해당 결과 안에서 위의 질문을 통해 중요 키워드를 추출했다.
+    question answering을 통해 나온 결과물은 길이가 길어 태그에 적합하지 않을 수 있기 때문에 만약 결과가 5단어 이상일 경우 다시 해당 결과 안에서 위의 질문을 통해 중요 키워드를 추출했다.
 
 ### 댓글
 
