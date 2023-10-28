@@ -70,7 +70,7 @@ gpt2 모델을 이용했다.
 
 ### 일기 작성
 
-<img width="528" alt="Screenshot 2023-10-28 at 10 28 45 PM" src="https://github.com/sbpark0611/diary/assets/101174826/8c70a7aa-b91e-4f20-9de8-22be242153ce">
+<img width="534" alt="Screenshot 2023-10-28 at 10 21 39 PM" src="https://github.com/sbpark0611/diary/assets/101174826/504ba31a-dc23-4e92-b6be-1ff160c85683">
 
 - 너무 길게 작성하면 모델에서 오류가 난다.
 
